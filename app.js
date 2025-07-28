@@ -9,7 +9,7 @@ const DEFAULT_QUESTIONS = [
     { id: 3, text: 'Alliance with this team?', type: 'select', options: ['Yes', 'No', 'I don\'t play with/against this team'], required: true, category: 'basic' },
     { id: 4, text: 'How many points can be scored in Auto?', type: 'number', required: false, category: 'Auto' },
     { id: 5, text: 'How many points can be scored in Teleop?', type: 'number', required: false, category: 'Teleop' },
-    { id: 6, text: 'Endgame Performance', type: 'select', options: ['None', 'Parked', 'Hanging'], required: false, category: 'endgame' },
+    { id: 6, text: 'Endgame Performance', type: 'select', options: ['None', 'Parked'], required: false, category: 'endgame' },
     { id: 7, text: 'Additional Notes', type: 'text', required: false, category: 'notes' }
 ];
 
