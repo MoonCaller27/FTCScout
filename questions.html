@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FTCScout - Questions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="min-h-screen gradient-bg">
+    
+    <header class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <img 
+                        src="roboravens.png" 
+                        alt="Robo Ravens Logo" 
+                        class="h-8 w-auto mr-3 rounded-lg shadow-sm"
+                    />
+                    <h1 class="text-xl font-bold text-gray-900">FTCScout</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+   
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex space-x-8">
+                <a href="scout.html" class="nav-link py-4 px-1 border-b-2 font-medium text-sm flex items-center gap-2">
+                    <i data-lucide="hard-drive-upload" class="w-4 h-4"></i>
+                    Scout
+                </a>
+                <a href="data.html" class="nav-link py-4 px-1 border-b-2 font-medium text-sm flex items-center gap-2">
+                    <i data-lucide="bar-chart-3" class="w-4 h-4"></i>
+                    Data
+                </a>
+                <a href="questions.html" class="nav-link active py-4 px-1 border-b-2 font-medium text-sm flex items-center gap-2">
+                    <i data-lucide="settings" class="w-4 h-4"></i>
+                    Questions
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white rounded-lg card-shadow p-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Questions</h2>
+            <div class="bg-gray-50 p-4 rounded-lg mb-6">
+                <h3 class="text-lg font-medium mb-4">New Question</h3>
+                <form id="add-question-form">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Question Text</label>
+                            <input type="text" id="question-text" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter question text" required>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Question Type</label>
+                            <select id="question-type" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="text">Text Input</option>
+                                <option value="number">Number</option>
+                                <option value="select">Dropdown</option>
+                                <option value="range">Range Slider</option>
+                                <option value="checkbox">Checkbox</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+                            <select id="question-category" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="basic">Basic</option>
+                                <option value="autonomous">Auto</option>
+                                <option value="teleop">Teleop</option>
+                                <option value="endgame">Endgame</option>
+                                <option value="performance">Performance</option>
+                                <option value="notes">Notes</option>
+                                <option value="general">General</option>
+                            </select>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <input type="checkbox" id="question-required" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mr-2">
+                            <label for="question-required" class="text-sm font-medium text-gray-700">Required</label>
+                        </div>
+                    </div>
+                    
+                    <div id="options-container" class="mt-4 hidden">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Options (comma-separated)</label>
+                        <input type="text" id="question-options" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Option 1, Option 2, Option 3">
+                    </div>
+                    
+                    <div id="range-container" class="mt-4 hidden">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Min Value</label>
+                                <input type="number" id="range-min" value="1" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Max Value</label>
+                                <input type="number" id="range-max" value="10" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <button type="submit" class="btn-success text-white px-4 py-2 rounded-md flex items-center gap-2">
+                            <i data-lucide="plus" class="w-4 h-4"></i>
+                            Add Question
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="space-y-4">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-lg font-medium">Existing Questions</h3>
+                    <button id="reset-questions" class="btn-danger text-white px-4 py-2 rounded-md text-sm">
+                        Reset to Defaults
+                    </button>
+                </div>
+                <div id="questions-list"></div>
+            </div>
+        </div>
+    </main>
+    <div id="edit-modal" class="fixed inset-0 modal-overlay flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg p-6 w-full max-w-md mx-4">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-medium">Edit Question</h3>
+                <button id="close-modal" class="text-gray-400 hover:text-gray-600">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            
+            <form id="edit-question-form">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Question Text</label>
+                        <input type="text" id="edit-question-text" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+                        <select id="edit-question-category" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="basic">Basic</option>
+                            <option value="autonomous">Auto</option>
+                            <option value="teleop">Teleop</option>
+                            <option value="endgame">Endgame</option>
+                            <option value="performance">Performance</option>
+                            <option value="notes">Notes</option>
+                            <option value="general">General</option>
+                        </select>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <input type="checkbox" id="edit-question-required" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mr-2">
+                        <label for="edit-question-required" class="text-sm font-medium text-gray-700">Required</label>
+                    </div>
+                </div>
+                
+                <div class="flex justify-end gap-3 mt-6">
+                    <button type="button" id="cancel-edit" class="px-4 py-2 text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300">
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn-primary text-white px-4 py-2 rounded-md flex items-center gap-2">
+                        <i data-lucide="save" class="w-4 h-4"></i>
+                        Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+            
+            loadQuestionsPage();
+            document.getElementById('add-question-form').addEventListener('submit', addQuestion);
+            document.getElementById('edit-question-form').addEventListener('submit', updateQuestion);
+            document.getElementById('close-modal').addEventListener('click', closeEditModal);
+            document.getElementById('cancel-edit').addEventListener('click', closeEditModal);
+            document.getElementById('reset-questions').addEventListener('click', resetToDefaults);
+            document.getElementById('question-type').addEventListener('change', function(e) {
+                const optionsContainer = document.getElementById('options-container');
+                const rangeContainer = document.getElementById('range-container');
+                
+                optionsContainer.classList.add('hidden');
+                rangeContainer.classList.add('hidden');
+                
+                if (e.target.value === 'select') {
+                    optionsContainer.classList.remove('hidden');
+                } else if (e.target.value === 'range') {
+                    rangeContainer.classList.remove('hidden');
+                }
+            });
+            document.getElementById('edit-modal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeEditModal();
+                }
+            });
+        });
+
+        function resetToDefaults() {
+            if (confirm('This will reset all questions to defaults and delete any custom questions. Are you sure?')) {
+                resetQuestionsToDefault();
+                loadQuestionsPage();
+            }
+        }
+    </script>
+</body>
+</html>
